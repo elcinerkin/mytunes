@@ -15,14 +15,25 @@ var AppModel = Backbone.Model.extend({
 
     //are the only two modules that 'talk' to appModel, SongModel & SongQueue
     //is this kind of an event listener?
+    //where does the song originate?
 
     params.library.on('play', function(song){
       this.set('currentSong', song);
+      console.log("play in app model called");
     }, this);
 
     params.library.on('enqueue', function(song) {
       this.get('songQueue').add(song);
     }, this);
+
+    params.library.on('dequeue', function(song) {
+      this.get('songQueue').remove(song);
+    }, this);
+
+    params.library.on('ended', function(song) {
+      this.set('currentSong', null);
+      console.log("app model on ended");
+    })
 
     // this.get('songQueue').on('stop', function(){
     //   this.set('currentSong', null);

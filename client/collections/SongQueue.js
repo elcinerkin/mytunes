@@ -4,21 +4,18 @@ var SongQueue = Songs.extend({
 // this model will provide the queue the events to be listened
 // the song queue will broadcast when a song is clicked on the queue model
   initialize: function() {
-  	this.on('add', function(){}, this);
+  },
 
-  	this.on('remove', function(){}, this);
-  	
-  	this.on('dequeue', function(){}, this);
-  	
-  	this.on('ended', function(){}, this);
+  play: function(){
+  	//this.model.play();
   },
 
   enqueue: function() {
-  		this.trigger('enqueue', this);
+  // 	this.trigger('enqueue', this);
   },
   
   dequeue: function() {
-  		this.trigger('dequeue', this);
+  // 	this.trigger('dequeue', this);
   }
   
 });
